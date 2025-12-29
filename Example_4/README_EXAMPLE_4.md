@@ -1,4 +1,4 @@
-# Example 2: Bivariate Clara model with non-invertible reward mapping
+# Example 4: Bivariate model with non-invertible reward matrix and not fully known CTMC
 
 This repository contains an ECM (Expectation–Conditional Maximization)
 implementation for the **Clara bivariate reward model** with a
@@ -13,7 +13,7 @@ thesis.
 - **`Example_4_algorithm.py`**
 
 This script contains all simulation, E-step, M-step, likelihood evaluation, and
-ECM estimation routines for the Clara non-invertible reward example. It
+ECM estimation routines for example 4. It
 simulates synthetic data from a three-state CTMC with an optional visit to
 state 3, evaluates the observed-data likelihood, and fits parameters via an
 ECM procedure with closed-form rate updates and numerical updates for the
@@ -22,37 +22,9 @@ reward parameters.
 ### Run script (recommended)
 - **`Run_Example_4.py`**
 
-This script runs Monte Carlo experiments using the algorithm implemented in
-`clara_ecm_algorithm.py`. It simulates synthetic data, fits the model from
+This script runs Monte Carlo experiments using the algorithm. It simulates synthetic data, fits the model from
 chosen initializations, computes diagnostics (e.g. log-likelihood traces),
 and exports results to CSV files.
-
----
-
-## Model overview
-
-- Latent process: CTMC with transient states \(1 \to 2\), optional visit to
-  state 3, then absorption
-- Indicator \(H \sim \mathrm{Bernoulli}(q)\) determines whether state 3 is visited
-- Sojourn rates: \(\lambda_1>0, \lambda_2>0, \lambda_3>0\)
-- Reward parameters: \(r_{31}>0, r_{32}>0\)
-
-### Latent sojourn times
-
-- \(Z_1 \sim \mathrm{Exp}(\lambda_1)\)
-- \(Z_2 \sim \mathrm{Exp}(\lambda_2)\)
-- \(H \sim \mathrm{Bernoulli}(q)\)
-- \(Z_3 \sim \mathrm{Exp}(\lambda_3)\) if \(H=1\), and \(Z_3=0\) if \(H=0\)
-
-### Observation model
-
-Observed data are given by a non-invertible reward mapping:
-\[
-Y_1 = Z_1 + r_{31} Z_3,\qquad
-Y_2 = Z_2 + r_{32} Z_3,
-\]
-so the latent vector \((Z_1,Z_2,Z_3)\in\mathbb{R}^3\) is mapped to the observed
-vector \((Y_1,Y_2)\in\mathbb{R}^2\).
 
 ---
 
@@ -116,7 +88,7 @@ Aggregates expected sufficient statistics:
 
 ---
 
-### 5. M-step (rates and mixture probability)
+### 5. M-step
 
 - `M_step_clara(S1_hat, S2_hat, S3H_hat, H_sum_hat, N)`
 
