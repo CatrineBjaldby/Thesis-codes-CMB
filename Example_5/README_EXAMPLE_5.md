@@ -20,8 +20,7 @@ Key implementation features:
 ### Run script 
 - **`Run_example_5.py`**
 
-This script runs 7 Monte Carlo experiments using the algorithm implemented in
-`mphstar_noninv_unknownpath_ecm.py`. It simulates synthetic data, fits the model
+This script runs 7 Monte Carlo experiments using the algorithm . It simulates synthetic data, fits the model
 from chosen random initializations, tracks convergence via likelihood diagnostics, and
 exports results to CSV files.
 
