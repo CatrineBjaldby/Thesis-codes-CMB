@@ -12,7 +12,7 @@ likelihood evaluation, and full ECM estimation routines for example 5
 Key implementation features:
 - Adaptive truncation of the infinite sum over \(V=1,2,\dots\) using a
   negligible-tail stopping rule
-- Caching of expensive quadrature integrals inside the E-step over z_3
+- Caching of expensive quadrature integrals inside the E-step over z_3 to not calculate them over and over again
 - Log-likelihood tracking obtained directly from E-step weights
 - Reward parameters \((r_{31}, r_{32})\) updated by monotone ascent using a
   log-parameterization and backtracking line search
