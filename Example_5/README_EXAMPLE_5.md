@@ -92,7 +92,7 @@ Returns `(logI0, logI1)` computed by trapezoidal integration on a uniform grid.
 
 ### 4. Adaptive E-step with posterior weights \(w_{v,h}(y)\)
 
-#### Single-observation E-step (fast, cached)
+#### Single-observation E-step 
 - `E_for_one_obs_adaptive_cached(...)`
 
 For each observation \(y=(y_1,y_2)\), the posterior over \((V,H)\) is proportional to:
@@ -135,14 +135,11 @@ Returns aggregated expected sufficient statistics:
 - \((HZ_3)_\Sigma = \sum_n E[H^{(n)}Z_3^{(n)}\mid Y]\)
 - mean truncation level `v_used_mean` (diagnostic)
 
-#### Full-sample E-step + observed log-likelihood (preferred for speed)
+#### Full-sample E-step + observed log-likelihood
 - `E_step_adaptive_with_ll(...)`
 
 Same as `E_step_adaptive`, but also returns:
 - `ll_total = sum_n log f_Y(y^(n))`
-
-This avoids redundant calls to the observed likelihood during convergence tracking.
-
 ---
 
 ### 5. CM-step: closed-form updates for CTMC rates
@@ -202,8 +199,5 @@ The full estimation routine `run_ecm(...)` proceeds as follows:
    - **Stopping rule:** Kulkarni-style likelihood criterion using
      \(|\Delta \ell|/N < \texttt{eps_ll}\) after at least `min_iters_ll` iterations
    - Optionally apply a secondary relative parameter-change criterion
-
-The function returns final parameter estimates and (optionally) the log-likelihood
-history if `track_ll=True`.
 
 ---
