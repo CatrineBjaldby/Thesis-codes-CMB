@@ -1,4 +1,4 @@
-# Example 3 — Extended Kulkarni ECM/EM (Soft Support + Adaptive Truncation)
+# Example 3 — with unknown CTMC (backjumps)
 
 ## Scripts
 
@@ -14,24 +14,6 @@ routines for example 3, including the ECM-type estimation algorithm.
 This script runs 10 Monte Carlo experiments using the algorithm implemented in
 `Example_3_algorithm.py`. It simulates synthetic data, fits the model, computes
 diagnostics, and exports results to CSV files.
-
----
-
-### Latent sufficient statistics
-For each trajectory, the latent data include:
-
-- `Z1`, `Z2`: total sojourn times in states 1 and 2  
-- `N12`, `N21`: number of transitions 1→2 and 2→1  
-- `N2a`: absorption count from state 2 (always 1 per trajectory)
-
-### Observed data (bivariate reward)
-We observe a bivariate random vector `Y ∈ R^2` related to sojourn times by:
-
-\[
-Y = Z R,
-\]
-
-where \(Z = (Z_1, Z_2)\) and \(R \in \mathbb{R}^{2\times 2}\) is a **row-stochastic reward matrix** (each row sums to 1).
 
 ---
 
