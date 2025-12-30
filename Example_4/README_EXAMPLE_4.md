@@ -1,10 +1,8 @@
 # Example 4: Bivariate model with non-invertible reward matrix and not fully known CTMC
 
 This repository contains an ECM (Expectation–Conditional Maximization)
-implementation for the **Clara bivariate reward model** with a
-**non-invertible reward mapping**, corresponding to the Clara example in the
-thesis.
-
+implementation examplke 4 with a
+**non-invertible reward mapping**
 ---
 
 ## Scripts
